@@ -23,11 +23,18 @@
 
 .app-main {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 30px;
 }
 
-.income-section, .expense-section {
+.app-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+}
+
+.income-section, .expense-section, .budget-section, .progress-section {
   flex: 1;
   min-width: 300px;
   background-color: #fff;
@@ -37,14 +44,14 @@
 }
 
 /* Form Styles */
-.income-form, .expense-form {
+.income-form, .expense-form, .budget-form {
   margin-bottom: 20px;
   padding: 20px;
   background-color: #f5f5f5;
   border-radius: 8px;
 }
 
-.income-form h2, .expense-form h2 {
+.income-form h2, .expense-form h2, .budget-form h2, .progress-display h2 {
   margin-bottom: 1rem;
   color: #2c3e50;
 }
@@ -127,4 +134,80 @@ th {
 
 tr:hover {
   background-color: #f5f5f5;
+}
+
+/* Progress Display Styles */
+.progress-display {
+  margin-top: 20px;
+}
+
+.progress-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.progress-amounts {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.progress-bar-container {
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+.progress-bar[data-percentage^="1"]::after {
+  content: attr(data-percentage);
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.progress-footer {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: right;
+}
+
+/* Change progress bar color based on percentage */
+.progress-bar[data-percentage^="8"],
+.progress-bar[data-percentage^="9"],
+.progress-bar[data-percentage="100%"] {
+  background-color: #f44336; /* Red for high percentages */
+}
+
+.progress-bar[data-percentage^="6"],
+.progress-bar[data-percentage^="7"] {
+  background-color: #ff9800; /* Orange for medium-high percentages */
 }

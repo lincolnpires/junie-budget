@@ -13,6 +13,18 @@ export interface Expense {
   date: string;
 }
 
+export interface Budget {
+  category: string;
+  amount: number;
+}
+
+export interface CategoryProgress {
+  category: string;
+  budgetAmount: number;
+  spentAmount: number;
+  percentage: number;
+}
+
 // Predefined expense categories
 export const EXPENSE_CATEGORIES = [
   'Tools',
